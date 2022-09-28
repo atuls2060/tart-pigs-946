@@ -1,12 +1,371 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="stylesheet" href="styles/index.css">
+    <title>Hotjar clone</title>
 </head>
+
 <body>
-    
+    <!-- Navbar Section -->
+    <div class="navbar">
+        <div class="nav-left">
+            <a href="/">
+                <svg width="93" height="24" viewBox="0 0 93 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <g clip-path="url(#clip1)">
+                        <path
+                            d="M24.3125 18.196V0.026062H27.1355V7.1894C28.0245 5.8653 29.3579 5.20301 31.1355 5.20254C32.6518 5.20254 33.8239 5.65131 34.6519 6.54885C35.4799 7.4464 35.894 8.69696 35.8941 10.3005V18.196H33.071V10.6927C33.071 8.61885 32.1472 7.58181 30.2996 7.58153C29.3756 7.58153 28.6175 7.8604 28.0252 8.41814C27.433 8.97588 27.1365 9.76021 27.136 10.7711V18.1958L24.3125 18.196Z"
+                            fill="#323232"></path>
+                        <path
+                            d="M49.2358 16.6278C47.9809 17.8827 46.4037 18.5101 44.5039 18.5101C42.6042 18.5101 41.0225 17.8827 39.7587 16.6278C38.495 15.3728 37.8632 13.7778 37.8633 11.8427C37.8634 9.90774 38.4952 8.31742 39.7587 7.0718C41.0223 5.82589 42.604 5.2028 44.5039 5.20251C46.4038 5.20223 47.9811 5.82533 49.2358 7.0718C50.4909 8.31817 51.1184 9.90849 51.1183 11.8427C51.1182 13.777 50.4907 15.372 49.2358 16.6278ZM41.8242 15.0328C42.4947 15.8171 43.388 16.2093 44.5039 16.2093C45.6199 16.2093 46.5131 15.8171 47.1836 15.0328C47.8543 14.2485 48.1898 13.1852 48.1901 11.8427C48.1901 10.5183 47.8503 9.46381 47.1706 8.67938C46.4909 7.89495 45.602 7.50278 44.5039 7.50288C43.3883 7.50288 42.495 7.89067 41.8242 8.66625C41.1533 9.44184 40.8178 10.5005 40.8176 11.8422C40.8176 13.1852 41.1531 14.2487 41.8242 15.0328Z"
+                            fill="#323232"></path>
+                        <path
+                            d="M57.653 18.5097C55.0558 18.5097 53.7572 17.1153 53.7572 14.3266V7.89528H51.7969V5.5163H53.8361L54.4898 1.77844H56.6071V5.5163H61.6528V7.89528H56.6073V14.2483C56.6073 15.4162 57.0343 16.0001 57.8883 16C58.6898 16 59.4131 15.2679 60.0582 13.8038L62.2544 14.9281C61.1735 17.3161 59.6397 18.5099 57.653 18.5097Z"
+                            fill="#323232"></path>
+                        <path
+                            d="M63.1619 23.9999C61.907 23.9999 60.8699 23.6513 60.0508 22.9541L61.0966 20.7319C61.6022 21.3242 62.1512 21.6206 62.7437 21.6212C63.5279 21.6212 63.92 21.1158 63.92 20.1049V5.51627H66.7431V20.1565C66.7431 21.516 66.4076 22.4964 65.7365 23.0976C65.0655 23.6989 64.2073 23.9996 63.1619 23.9999ZM65.3318 3.37231C64.8677 3.38806 64.4163 3.21883 64.0769 2.90185C63.9136 2.74799 63.785 2.56121 63.6994 2.35389C63.6138 2.14657 63.5732 1.92342 63.5803 1.69923C63.574 1.4732 63.615 1.24835 63.7005 1.03903C63.786 0.829703 63.9142 0.640498 64.0769 0.483486C64.4182 0.172345 64.8634 -0.00012207 65.3253 -0.00012207C65.7871 -0.00012207 66.2324 0.172345 66.5737 0.483486C66.7398 0.638546 66.8712 0.827086 66.9591 1.03666C67.0469 1.24622 67.0894 1.47205 67.0835 1.69923C67.0876 1.9223 67.0443 2.14369 66.9564 2.34875C66.8685 2.55381 66.7381 2.73786 66.5737 2.88872C66.4087 3.04711 66.2141 3.17136 66.001 3.25434C65.7879 3.33733 65.5605 3.37742 65.3318 3.37231Z"
+                            fill="#323232"></path>
+                        <path
+                            d="M73.7553 18.5098C72.3084 18.5098 71.1362 18.1481 70.2389 17.4249C69.3415 16.7016 68.8928 15.7302 68.8926 14.5105C68.8926 13.3951 69.3588 12.4494 70.2913 11.6733C71.2237 10.8973 72.3958 10.5095 73.8075 10.51C75.2542 10.51 76.4743 10.9719 77.4677 11.8957V10.353C77.4677 9.44699 77.2367 8.74547 76.7748 8.24842C76.3128 7.75138 75.6549 7.503 74.8011 7.50328C73.0756 7.50328 72.0037 8.38341 71.5853 10.1437L68.997 9.59473C69.3452 8.23534 70.0337 7.16348 71.0625 6.37914C72.0913 5.5948 73.3723 5.20264 74.9055 5.20264C76.5789 5.20264 77.8992 5.64275 78.8664 6.52298C79.8336 7.4032 80.3172 8.68854 80.3174 10.379V18.1961H77.5722V16.6011C76.6482 17.8737 75.3759 18.51 73.7553 18.5098ZM74.2775 16.4183C75.5326 16.4183 76.5959 15.7909 77.4676 14.5361V14.1435C76.5958 13.0978 75.5325 12.5749 74.2775 12.575C73.5456 12.575 72.9528 12.7538 72.499 13.1114C72.2845 13.2694 72.1109 13.4764 71.9927 13.7152C71.8744 13.9539 71.815 14.2175 71.8192 14.4838C71.8123 14.753 71.8692 15.02 71.985 15.2631C72.1009 15.5061 72.2726 15.7184 72.486 15.8825C72.9314 16.2398 73.5288 16.4184 74.2781 16.4183H74.2775Z"
+                            fill="#323232"></path>
+                        <path
+                            d="M83.0645 18.196V5.51626H85.8096V7.7123C86.5065 6.10891 87.7091 5.30716 89.4175 5.30707C90.428 5.30707 91.2646 5.63821 91.9273 6.3005C92.59 6.96279 92.921 7.85167 92.9204 8.96715C92.9134 9.63477 92.7987 10.2969 92.5806 10.9279L89.9924 10.6665C90.0455 10.32 90.0803 9.97097 90.0968 9.62083C90.0968 8.31366 89.5566 7.66003 88.4761 7.65994C87.7439 7.65994 87.1295 8.04773 86.6329 8.82331C86.1364 9.5989 85.8879 10.6229 85.8877 11.8954V18.196H83.0645Z"
+                            fill="#323232"></path>
+                        <path
+                            d="M6.68018 7.45632C8.7842 6.28744 11.6658 4.68621 11.6658 0.026062H8.17653C8.17653 2.63343 6.90715 3.33863 4.98564 4.40616C2.88163 5.57547 0 7.176 0 11.8366H3.48929C3.48929 9.22906 4.75867 8.52386 6.68018 7.45632Z"
+                            fill="#FF3C00"></path>
+                        <path
+                            d="M12.7195 6.38544C12.7195 8.99294 11.4501 9.69814 9.52861 10.7655C7.42516 11.9344 4.54297 13.5354 4.54297 18.1959H8.03212C8.03212 15.5884 9.3015 14.8832 11.223 13.8157C13.327 12.6468 16.2085 11.046 16.2085 6.38544H12.7195Z"
+                            fill="#FF3C00"></path>
+                    </g>
+                    <defs>
+                        <clipPath>
+                            <rect width="92.9209" height="24" fill="white"></rect>
+                        </clipPath>
+                    </defs>
+                </svg>
+            </a>
+            <a>
+                Product
+                <svg width="6" height="5" viewBox="0 0 6 5" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M1 2L3 4L5 2" stroke="black" stroke-opacity="0.89">
+                    </path>
+                </svg>
+            </a>
+            <a>
+                Why Hotjar
+                <svg width="6" height="5" viewBox="0 0 6 5" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M1 2L3 4L5 2" stroke="black" stroke-opacity="0.89">
+                    </path>
+                </svg>
+            </a>
+            <a>
+                Pricing
+            </a>
+            <a>
+                Learn
+                <svg width="6" height="5" viewBox="0 0 6 5" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M1 2L3 4L5 2" stroke="black" stroke-opacity="0.89">
+                    </path>
+                </svg>
+            </a>
+            <a>
+                Company
+                <svg width="6" height="5" viewBox="0 0 6 5" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M1 2L3 4L5 2" stroke="black" stroke-opacity="0.89">
+                    </path>
+                </svg>
+            </a>
+        </div>
+        <div class="nav-right">
+            <a>Sign in</a>
+            <a>Get started free</a>
+            <a> <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M0 20C0 8.95431 8.95431 0 20 0C31.0457 0 40 8.95431 40 20C40 31.0457 31.0457 40 20 40C8.95431 40 0 31.0457 0 20Z"
+                        fill="#F6F6F7">
+                    </path>
+                    <path fill-rule="evenodd" clip-rule="evenodd"
+                        d="M19.7074 9.13178C19.8526 9.38932 19.8329 9.70809 19.6572 9.94582C18.5988 11.3777 18.0895 13.1419 18.2219 14.9175C18.3543 16.6931 19.1197 18.3623 20.3787 19.6213C21.6378 20.8804 23.3069 21.6457 25.0825 21.7781C26.8582 21.9105 28.6223 21.4012 30.0542 20.3428C30.2919 20.1671 30.6107 20.1474 30.8682 20.2926C31.1258 20.4377 31.274 20.7206 31.2468 21.015C31.0498 23.147 30.2497 25.1787 28.9401 26.8726C27.6304 28.5664 25.8655 29.8522 23.8518 30.5796C21.8381 31.307 19.6589 31.4458 17.5691 30.9798C15.4794 30.5139 13.5655 29.4624 12.0516 27.9484C10.5376 26.4345 9.48615 24.5206 9.02019 22.4309C8.55423 20.3412 8.69305 18.1619 9.42042 16.1482C10.1478 14.1345 11.4336 12.3696 13.1275 11.06C14.8213 9.75034 16.8531 8.95022 18.985 8.75319C19.2794 8.72599 19.5623 8.87424 19.7074 9.13178ZM17.5721 10.5175C16.2967 10.8479 15.0958 11.4342 14.0449 12.2466C12.5765 13.382 11.4618 14.912 10.8312 16.6578C10.2006 18.4036 10.0803 20.2928 10.4842 22.1045C10.8882 23.9161 11.7998 25.5753 13.1122 26.8878C14.4247 28.2003 16.0839 29.1118 17.8956 29.5158C19.7072 29.9197 21.5965 29.7994 23.3422 29.1688C25.088 28.5382 26.618 27.4235 27.7534 25.9551C28.5659 24.9042 29.1521 23.7033 29.4825 22.428C28.0868 23.0939 26.5325 23.3904 24.971 23.2739C22.8371 23.1148 20.8311 22.1951 19.318 20.682C17.805 19.1689 16.8852 17.163 16.7261 15.029C16.6096 13.4675 16.9062 11.9133 17.5721 10.5175Z"
+                        fill="black" fill-opacity="0.89">
+                    </path>
+                </svg></a>
+        </div>
+    </div>
+
+    <!-- Top Section -->
+
+    <div class="top">
+        <div class="top-heading">
+            <h1>Understand <b>how users behave</b> on your site, what they need, and how they feel, fast.</h1>
+            <div>
+                <div class="top-heading-info">
+                    <img src="https://images.ctfassets.net/lh3zuq09vnm2/6zxMbtJI8T43Ia7uHg49YB/32b9315a40b4f1363fb448bd0cab5534/icon-no-card.svg"
+                        alt="">
+                    <p>No credit card required</p>
+                </div>
+                <div class="top-heading-info">
+                    <img src="https://images.ctfassets.net/lh3zuq09vnm2/o8L9i7vSjKytR7aYfef7C/ead95db8958fa7ef66750e9ba4fea91e/icon-sign.svg"
+                        alt="">
+                    <p>56,549 users signed up last month</p>
+                </div>
+                <div class="top-heading-info">
+                    <img src="https://images.ctfassets.net/lh3zuq09vnm2/6lgSqbFdgGqSyLx3sGk18/e768204f0c3755e5dd816762a402ac24/icon-privacy.svg"
+                        alt="">
+                    <p>GDPR- &amp; CCPA-ready</p>
+                </div>
+            </div>
+        </div>
+        <div class="top-video">
+            <button><svg width="64" height="64" viewBox="0 0 64 64"
+                    fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="32" cy="32" r="32" fill="#324FBE"></circle>
+                    <path
+                        d="M42.655 31.37L27.655 21.62C27.541 21.5542 27.4117 21.5195 27.28 21.5195C27.1483 21.5195 27.019 21.5542 26.905 21.62C26.7882 21.6803 26.6893 21.7703 26.6182 21.8808C26.5472 21.9914 26.5064 22.1187 26.5 22.25V41.75C26.4996 41.8849 26.5357 42.0175 26.6043 42.1336C26.6729 42.2498 26.7716 42.3452 26.89 42.41C27.0006 42.4697 27.1244 42.5006 27.25 42.5C27.3937 42.4996 27.5343 42.458 27.655 42.38L42.655 32.63C42.7603 32.562 42.8469 32.4687 42.9067 32.3587C42.9667 32.2486 42.9981 32.1253 42.9981 32C42.9981 31.8747 42.9667 31.7514 42.9067 31.6413C42.8469 31.5313 42.7603 31.438 42.655 31.37ZM28 40.37V23.63L40.8775 32L28 40.37Z"
+                        fill="white" fill-opacity="0.89"></path>
+                </svg>
+        </div>
+        <div class="top-right-content">
+            <h2>The slow, manual days of collating data and feedback are over.</h2>
+            <p>Hotjar is an intuitive, visual way to discover, consolidate, and communicate user needs.</p>
+            <a href="">Start free with email</a>
+            <a href=""><img id="google-logo" src="/tart-pigs-946/images/google.png" alt=""> Start free with Google</a>
+            <p>Hotjar is free forever - upgrade anytime</p>
+        </div>
+    </div>
+
+    <!-- Brand Section -->
+
+    <div class="brand">
+        <h2>
+            Trusted by 900,000 websites in 180+ countries
+        </h2>
+        <div>
+            <div class="sildes">
+                <img src="https://images.ctfassets.net/lh3zuq09vnm2/1F2mq86JzeTrvpY7QdJZmh/b29471d788aabbc36a27d5dea6dae917/Nintendo.svg"
+                    alt="">
+                <img src="https://images.ctfassets.net/lh3zuq09vnm2/7hhEfCdZPI7mPC24fFsC94/adf392604ef673a224307e48ac87bd96/Adobe.svg"
+                    alt="">
+                <img src="https://images.ctfassets.net/lh3zuq09vnm2/7siImqwRupwoBHyJCaO1zy/2d7ec1ccc7761f76c8fe18de52e889a4/T-Mobile.svg"
+                    alt="">
+                <img src="https://images.ctfassets.net/lh3zuq09vnm2/7EHGsWMc29UoHErPsvRAsi/0f8210b12ada1e9faa313b4d56274572/Panasonic.svg"
+                    alt="">
+                <img src="https://images.ctfassets.net/lh3zuq09vnm2/4Y87kRrhSPSYgUbSWYxP1z/a13177cf43f99e7a79c691c54e271a98/Hubspot.svg"
+                    alt="">
+                <img src="https://images.ctfassets.net/lh3zuq09vnm2/6Id0eTlVwUSuDcoeLXS6wh/ab8d55b51fbc0e2bc599a6f180ef6c99/Invision.svg"
+                    alt="">
+                <img src="https://images.ctfassets.net/lh3zuq09vnm2/3A5yNJ7WfWikTXKsk7r4hh/4060c710bc560b59a0dd06b6521fbe94/Decathlon.svg"
+                    alt="">
+                <img src="https://images.ctfassets.net/lh3zuq09vnm2/7dsuPwH4V8KJvCexSZueZc/272b2ef619de8ae4b443758413a19733/Unbounce_Logo.svg"
+                    alt="">
+                <img src="https://images.ctfassets.net/lh3zuq09vnm2/5F3AqUH61Ll0Oa6eRQKyuT/7ea7e484e1e46495ed4fae2a1162a575/TechSmith.svg"
+                    alt="">
+                <img src="https://images.ctfassets.net/lh3zuq09vnm2/18dCY8kGkSbfdNB2Eod1Pp/4768154e8873caa4c1574499dc4e2aab/Microsoft_Logo.svg"
+                    alt="">
+            </div>
+            <div class="sildes">
+                <img src="https://images.ctfassets.net/lh3zuq09vnm2/1F2mq86JzeTrvpY7QdJZmh/b29471d788aabbc36a27d5dea6dae917/Nintendo.svg"
+                    alt="">
+                <img src="https://images.ctfassets.net/lh3zuq09vnm2/7hhEfCdZPI7mPC24fFsC94/adf392604ef673a224307e48ac87bd96/Adobe.svg"
+                    alt="">
+                <img src="https://images.ctfassets.net/lh3zuq09vnm2/7siImqwRupwoBHyJCaO1zy/2d7ec1ccc7761f76c8fe18de52e889a4/T-Mobile.svg"
+                    alt="">
+                <img src="https://images.ctfassets.net/lh3zuq09vnm2/7EHGsWMc29UoHErPsvRAsi/0f8210b12ada1e9faa313b4d56274572/Panasonic.svg"
+                    alt="">
+                <img src="https://images.ctfassets.net/lh3zuq09vnm2/4Y87kRrhSPSYgUbSWYxP1z/a13177cf43f99e7a79c691c54e271a98/Hubspot.svg"
+                    alt="">
+                <img src="https://images.ctfassets.net/lh3zuq09vnm2/6Id0eTlVwUSuDcoeLXS6wh/ab8d55b51fbc0e2bc599a6f180ef6c99/Invision.svg"
+                    alt="">
+                <img src="https://images.ctfassets.net/lh3zuq09vnm2/3A5yNJ7WfWikTXKsk7r4hh/4060c710bc560b59a0dd06b6521fbe94/Decathlon.svg"
+                    alt="">
+                <img src="https://images.ctfassets.net/lh3zuq09vnm2/7dsuPwH4V8KJvCexSZueZc/272b2ef619de8ae4b443758413a19733/Unbounce_Logo.svg"
+                    alt="">
+                <img src="https://images.ctfassets.net/lh3zuq09vnm2/5F3AqUH61Ll0Oa6eRQKyuT/7ea7e484e1e46495ed4fae2a1162a575/TechSmith.svg"
+                    alt="">
+                <img src="https://images.ctfassets.net/lh3zuq09vnm2/18dCY8kGkSbfdNB2Eod1Pp/4768154e8873caa4c1574499dc4e2aab/Microsoft_Logo.svg"
+                    alt="">
+            </div>
+        </div>
+        <div class="slides-bottom">
+            <div>
+                <img src="https://images.ctfassets.net/lh3zuq09vnm2/4VTnrBBlDTLfnlzUNgyoIW/a41f6ffeb8cf966488c9936e814e98a9/check-icon.svg"
+                    alt="">
+                <p>No credit card required</p>
+            </div>
+            <div>
+                <img src="https://images.ctfassets.net/lh3zuq09vnm2/4VTnrBBlDTLfnlzUNgyoIW/a41f6ffeb8cf966488c9936e814e98a9/check-icon.svg"
+                    alt="">
+                <p>56,549 users signed up last month</p>
+            </div>
+            <div>
+                <img src="https://images.ctfassets.net/lh3zuq09vnm2/4VTnrBBlDTLfnlzUNgyoIW/a41f6ffeb8cf966488c9936e814e98a9/check-icon.svg"
+                    alt="">
+                <p>GDPR- &amp; CCPA-ready</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- How it Works Section -->
+
+    <div class="how-it-works">
+        <div class="heading">
+            <h2>How Hotjar works</h2>
+            <p>Understand how users really experience your site.</p>
+        </div>
+        <div>
+            <span class="observe">
+                <svg width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" clip-rule="evenodd"
+                        d="M1.81131 13.1429C1.81131 12.9138 1.89137 12.6986 2.02743 12.5373C2.89771 11.5486 4.30874 10.1095 6.06086 8.92223C7.82183 7.72891 9.86057 6.83503 12 6.83503C14.1394 6.83503 16.1782 7.72891 17.9391 8.92223C19.6913 10.1095 21.1023 11.5486 21.9726 12.5373C22.1086 12.6986 22.1887 12.9138 22.1887 13.1429C22.1887 13.3719 22.1086 13.5871 21.9726 13.7485C21.1023 14.7371 19.6913 16.1762 17.9391 17.3635C16.1782 18.5568 14.1394 19.4507 12 19.4507C9.86057 19.4507 7.82183 18.5568 6.06086 17.3635C4.30874 16.1762 2.89771 14.7371 2.02743 13.7485C1.89137 13.5871 1.81131 13.3719 1.81131 13.1429ZM12 5C9.36834 5 6.97794 6.09308 5.05377 7.39697C3.12406 8.70463 1.59589 10.2698 0.670115 11.3222L0.670057 11.3221L0.661486 11.3321C0.232515 11.8342 0 12.4797 0 13.1429C0 13.8061 0.232515 14.4515 0.661486 14.9536L0.661428 14.9537L0.670115 14.9635C1.59589 16.0159 3.12406 17.5811 5.05377 18.8887C6.97794 20.1926 9.36834 21.2857 12 21.2857C14.6317 21.2857 17.0221 20.1926 18.9462 18.8887C20.8759 17.5811 22.4041 16.0159 23.3299 14.9635L23.3299 14.9636L23.3385 14.9536C23.7675 14.4515 24 13.8061 24 13.1429C24 12.4797 23.7675 11.8342 23.3385 11.3321L23.3386 11.3321L23.3299 11.3222C22.4041 10.2698 20.8759 8.70463 18.9462 7.39697C17.0221 6.09308 14.6317 5 12 5ZM9.48583 13.1429C9.48583 11.6179 10.6469 10.4477 12.0003 10.4477C13.3538 10.4477 14.5148 11.6179 14.5148 13.1429C14.5148 14.6679 13.3538 15.8381 12.0003 15.8381C10.6469 15.8381 9.48583 14.6679 9.48583 13.1429ZM12.0003 8.61269C9.576 8.61269 7.67452 10.6774 7.67452 13.1429C7.67452 15.6083 9.576 17.6731 12.0003 17.6731C14.4247 17.6731 16.3261 15.6083 16.3261 13.1429C16.3261 10.6774 14.4247 8.61269 12.0003 8.61269Z"
+                        fill="black" fill-opacity="0.89"></path>
+                </svg>
+                Observe
+                <span>
+        </div>
+        <div>
+            <span class="ask">
+                <svg width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <g clip-path="url(#clip0_5052_64937)">
+                        <path fill-rule="evenodd" clip-rule="evenodd"
+                            d="M11.9964 0.500002C13.8018 0.498973 15.5842 0.905545 17.2106 1.68943C18.8372 2.47332 20.2659 3.61434 21.3901 5.02743C22.5144 6.44052 23.3054 8.0892 23.704 9.85063C24.1026 11.6121 24.0986 13.4407 23.6923 15.2004C23.286 16.96 22.4879 18.6053 21.3574 20.0134C20.227 21.4216 18.7934 22.5563 17.1634 23.3332C15.5335 24.11 13.7493 24.5088 11.9439 24.4998C10.2391 24.4914 8.55692 24.1197 7.00899 23.4107L1.06649 24.4855C0.745835 24.5435 0.418725 24.4247 0.210039 24.1743C0.0013524 23.924 -0.0567462 23.5808 0.0579084 23.2757L1.7587 18.7494C0.71293 17.0347 0.112864 15.0824 0.0170619 13.0711C-0.0862244 10.9029 0.40033 8.74737 1.42497 6.83394C2.4496 4.92052 3.97393 3.32092 5.83554 2.20549C7.69709 1.09017 9.82652 0.500745 11.9964 0.500002ZM11.9972 2.31132C10.1548 2.31189 8.34669 2.81234 6.76609 3.75937C5.18543 4.7064 3.89121 6.06457 3.02122 7.6892C2.15128 9.31377 1.73814 11.144 1.82583 12.9849C1.91352 14.8258 2.49873 16.6085 3.5192 18.143C3.68041 18.3854 3.71526 18.6906 3.61289 18.9632L2.31427 22.4191L6.97249 21.5766C7.16221 21.5423 7.35793 21.5694 7.53114 21.6541C8.90842 22.3274 10.4199 22.6809 11.9529 22.6885C13.4858 22.6961 15.0007 22.3575 16.3846 21.698C17.7685 21.0384 18.9857 20.0749 19.9455 18.8793C20.9053 17.6837 21.583 16.2868 21.9279 14.7927C22.2729 13.2987 22.2763 11.7461 21.9379 10.2505C21.5994 8.75497 20.9278 7.35514 19.9732 6.15537C19.0186 4.9556 17.8057 3.9868 16.4246 3.3212C15.0436 2.6556 13.5302 2.3104 11.9972 2.31132Z"
+                            fill="black" fill-opacity="0.89"></path>
+                        <path fill-rule="evenodd" clip-rule="evenodd"
+                            d="M12.3189 8.31701C11.998 8.25318 11.6654 8.28592 11.3632 8.41112C11.061 8.53638 10.8026 8.74843 10.6209 9.02055C10.4391 9.2926 10.3421 9.61255 10.3421 9.93975C10.3421 10.44 9.9367 10.8454 9.43666 10.8454C8.93663 10.8454 8.53125 10.44 8.53125 9.93975C8.53125 9.25426 8.73445 8.58421 9.1152 8.01421C9.49596 7.44426 10.0371 7.00003 10.6702 6.73769C11.3034 6.47541 12 6.40672 12.6722 6.54049C13.3443 6.67421 13.9617 7.00432 14.4463 7.48901C14.9309 7.97375 15.2609 8.59129 15.3946 9.26363C15.5283 9.93592 15.4597 10.6328 15.1974 11.2661C14.9352 11.8994 14.4911 12.4407 13.9212 12.8216C13.6071 13.0315 13.2625 13.1875 12.9016 13.2852V14.2068C12.9016 14.707 12.4962 15.1125 11.9962 15.1125C11.4962 15.1125 11.0908 14.707 11.0908 14.2068V12.5C11.0908 11.9998 11.4962 11.5943 11.9962 11.5943C12.3234 11.5943 12.6432 11.4973 12.9152 11.3155C13.1872 11.1337 13.3992 10.8753 13.5244 10.5729C13.6496 10.2706 13.6824 9.93792 13.6186 9.61701C13.5547 9.29603 13.3972 9.00124 13.1658 8.76981C12.9345 8.53844 12.6398 8.38083 12.3189 8.31701Z"
+                            fill="black" fill-opacity="0.89"></path>
+                        <path
+                            d="M11.9985 16.7667C11.7454 16.7667 11.498 16.8418 11.2875 16.9825C11.077 17.1231 10.913 17.3231 10.8161 17.557C10.7193 17.7909 10.6939 18.0483 10.7434 18.2966C10.7927 18.5449 10.9146 18.773 11.0936 18.952C11.2725 19.1311 11.5006 19.253 11.7489 19.3024C11.9971 19.3518 12.2544 19.3264 12.4883 19.2295C12.7221 19.1327 12.922 18.9686 13.0626 18.758C13.2032 18.5475 13.2783 18.3 13.2783 18.0469C13.2739 17.7087 13.1376 17.3857 12.8985 17.1466C12.6595 16.9075 12.3365 16.7712 11.9985 16.7667Z"
+                            fill="black" fill-opacity="0.89"></path>
+                    </g>
+                    <defs>
+                        <clipPath>
+                            <rect width="24" height="24" fill="white" transform="translate(0 0.5)"></rect>
+                        </clipPath>
+                    </defs>
+                </svg>
+                Ask</span>
+        </div>
+        <div>
+            <img src="https://images.ctfassets.net/lh3zuq09vnm2/5khXOtcSPp0ttREXhZirXR/bf41bc4a997d0ea49359482c4c36d257/Heatmaps.svg"
+                alt="">
+            <h3>Heatmaps</h3>
+            <p>Visualize user behaviour</p>
+            <p><a href="">Learn more</a></p>
+        </div>
+        <div>
+            <img src="https://images.ctfassets.net/lh3zuq09vnm2/6Qv16uzcArgmj23zvPE1Zg/e7861ed2958dda93ffdbf313c8a228c1/Recordings.svg"
+                alt="">
+            <h3>Recordings</h3>
+            <p>See what your users see</p>
+            <p><a href="">Learn more</a></p>
+        </div>
+        <div>
+            <img src="https://images.ctfassets.net/lh3zuq09vnm2/4COczjOFD9M9107Fg88Ol6/4a0040ffe4c7ebdd8d13c60b2408699a/Incoming-feedback.svg"
+                alt="">
+            <h3>Feedback</h3>
+            <p>Discover how users feel</p>
+            <p><a href="">Learn more</a></p>
+        </div>
+        <div>
+            <img src="https://images.ctfassets.net/lh3zuq09vnm2/4FznAGtU4dktOtbIGubStD/e496e6120efcf17cbb4a8b514ecbec43/Surveys.svg"
+                alt="">
+            <h3>Surveys</h3>
+            <p>Hear from your users</p>
+            <p><a href="">Learn more</a></p>
+        </div>
+
+    </div>
+
+    <!-- Privacy Section -->
+    <div class="privacy">
+        <div class="privacy-left">
+            <h2>Learn how we keep end-user privacy at the heart of everything we do. </h2>
+            <div><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 502 271" width="502" height="271"
+                    preserveAspectRatio="xMidYMid meet"
+                    style="width: 100%; height: 100%; transform: translate3d(0px, 0px, 0px);">
+                    <defs>
+                        <clipPath>
+                            <rect width="502" height="271" x="0" y="0"></rect>
+                        </clipPath>
+                        <filter filterUnits="objectBoundingBox" x="0%" y="0%" width="100%"
+                            height="100%">
+                            <feComponentTransfer in="SourceGraphic">
+                                <feFuncA type="table" tableValues="1.0 0.0"></feFuncA>
+                            </feComponentTransfer>
+                        </filter>
+                        <mask mask-type="alpha">
+                            <g filter="">
+                                <rect width="502" height="271" x="0" y="0" fill="#ffffff" opacity="0"></rect>
+                                <g style="display: block;"
+                                    transform="matrix(4.559999942779541,0,0,4.559999942779541,433.488525390625,122.38318634033203)"
+                                    opacity="1">
+                                    <g opacity="1" transform="matrix(1,0,0,1,4.25,4.25)">
+                                        <path fill="rgb(255,60,0)" fill-opacity="1"
+                                            d=" M0,4 C2.2090001106262207,4 4,2.2090001106262207 4,0 C4,-2.2090001106262207 2.2090001106262207,-4 0,-4 C-2.2090001106262207,-4 -4,-2.2090001106262207 -4,0 C-4,2.2090001106262207 -2.2090001106262207,4 0,4z">
+                                        </path>
+                                    </g>
+                                </g>
+                            </g>
+                        </mask>
+                        <mask>
+                            <path fill="#ffffff" clip-rule="nonzero"
+                                d="M0,0  h502 v271 h-502 v-271  M474.8580017089844,122.14399719238281 C474.8580017089844,122.14399719238281 458.6080017089844,141.3939971923828 458.6080017089844,141.3939971923828 C458.6080017089844,141.3939971923828 472.6080017089844,149.3939971923828 472.6080017089844,149.3939971923828 C472.6080017089844,149.3939971923828 485.3580017089844,134.1439971923828 483.8580017089844,133.1439971923828 C482.3580017089844,132.1439971923828 474.8580017089844,122.14399719238281 474.8580017089844,122.14399719238281"
+                                fill-opacity="1"></path>
+                        </mask>
+                    </defs>
+                    <g clip-path="">
+                        <g style="display: block;" transform="matrix(1,0,0,1,448.6185302734375,137.51318359375)"
+                            opacity="1">
+                            <g opacity="1" transform="matrix(1,0,0,1,4.25,4.25)">
+                                <path fill="rgb(255,60,0)" fill-opacity="1"
+                                    d=" M0,4 C2.2090001106262207,4 4,2.2090001106262207 4,0 C4,-2.2090001106262207 2.2090001106262207,-4 0,-4 C-2.2090001106262207,-4 -4,-2.2090001106262207 -4,0 C-4,2.2090001106262207 -2.2090001106262207,4 0,4z">
+                                </path>
+                            </g>
+                        </g>
+                        <g mask="" style="display: block;">
+                            <g mask=""
+                                transform="matrix(1,0,0,1,9.642013549804688,-38.14500427246094)" opacity="1">
+                                <g opacity="1" transform="matrix(1,0,0,1,237.5679931640625,171.531005859375)">
+                                    <path stroke-linecap="butt" stroke-linejoin="bevel" fill-opacity="0"
+                                        stroke="rgb(255,60,0)" stroke-opacity="1" stroke-width="4"
+                                        d=" M-233.5679931640625,-22.527000427246094 C-55.83599853515625,167.531005859375 197.0260009765625,-38.18600082397461 177.17300415039062,-94.98200225830078 C151.81399536132812,-167.52999877929688 -42.571998596191406,70.6449966430664 79.93199920654297,85.28500366210938 C109.33100128173828,88.7979965209961 153.6060028076172,75.5780029296875 199.85299682617188,16.56399917602539">
+                                    </path>
+                                </g>
+                            </g>
+                        </g>
+                    </g>
+                </svg></div>
+        </div>
+        <div class="privacy-right">
+            <div>
+                <img src="https://images.ctfassets.net/lh3zuq09vnm2/5B8CskghnpgzwFXtm8Ugma/80bebef0f59d2b56882429ff1ab72942/Legal.svg"
+                    alt="">
+                <h3>GDPR commitment</h3>
+                <p><a href="">Learn more</a></p>
+            </div>
+            <div>
+                <img src="https://images.ctfassets.net/lh3zuq09vnm2/5B8CskghnpgzwFXtm8Ugma/80bebef0f59d2b56882429ff1ab72942/Legal.svg"
+                    alt="">
+                <h3>GDPR commitment</h3>
+                <p><a href="">Learn more</a></p>
+            </div>
+            <div>
+                <img src="https://images.ctfassets.net/lh3zuq09vnm2/5B8CskghnpgzwFXtm8Ugma/80bebef0f59d2b56882429ff1ab72942/Legal.svg"
+                    alt="">
+                <h3>GDPR commitment</h3>
+                <p><a href="">Learn more</a></p>
+            </div>
+            <div>
+                <img src="https://images.ctfassets.net/lh3zuq09vnm2/6lgSqbFdgGqSyLx3sGk18/e768204f0c3755e5dd816762a402ac24/icon-privacy.svg"
+                    alt="">
+                <h3>GDPR commitment</h3>
+                <p><a href="">Learn more</a></p>
+            </div>
+        </div>
+    </div>
+
 </body>
+
 </html>
