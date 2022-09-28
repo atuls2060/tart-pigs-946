@@ -1,0 +1,395 @@
+@import url("https://fonts.googleapis.com/css?family=Poppins|Roboto");
+
+@font-face {
+    font-family: Ambit;
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url(../fonts/Ambit-Regular.ttf);
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    padding: 0px;
+    margin: 0px;
+    font-weight: 400;
+    font-family: Ambit, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+}
+
+
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 80px;
+    border-bottom: 1px solid lightgray;
+    padding: 0px 5%;
+    box-sizing: border-box;
+}
+
+.nav-left {
+    display: flex;
+}
+
+.nav-left>a:first-child>svg {
+    transform: scale(1.3);
+    margin-right: 30px;
+    position: relative;
+    box-sizing: border-box;
+}
+
+.nav-left>a {
+    padding: 21px;
+    font-size: 22px;
+    text-decoration: none;
+    box-sizing: border-box;
+    border-top: 5px solid white;
+}
+
+.nav-left>a:not(:first-child):hover {
+    border-top: 5px solid #FF3C00;
+}
+
+.nav-right {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.nav-right>a:first-child {
+    font-family: Roboto, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    border: 1px solid #324FBE;
+    border-radius: 4px;
+    font-size: 20px;
+    color: #324FBE;
+    background-color: white;
+    font-weight: 500;
+    padding: 12px 18px;
+}
+
+.nav-right>a:nth-child(2) {
+    font-family: Roboto, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    border: 1px solid #324FBE;
+    border-radius: 4px;
+    font-size: 20px;
+    font-weight: 500;
+    color: white;
+    background-color: #324FBE;
+    padding: 12px 18px;
+}
+
+.nav-right>a:nth-child(3)>svg {
+    width: 48px;
+    height: 48px;
+    cursor: pointer;
+}
+
+.nav-right>a:nth-child(3)>svg>path:first-child {
+    opacity: 0;
+}
+.nav-right>a:nth-child(3)>svg>path:first-child:hover {
+    opacity: 1;
+}
+
+/* Top Section */
+.top {
+    display: grid;
+    margin: 28px 5%;
+    grid-template-columns: repeat(12, 1fr);
+    grid-template-rows: repeat(3, 220px);
+    gap: 30px;
+
+}
+
+
+.top-heading {
+    grid-column: 1 / 10;
+}
+
+.top-heading h1 {
+    font-size: 50px;
+    font-weight: 600;
+    line-height: 65px;
+}
+
+.top-heading h1+div {
+    display: flex;
+    justify-content: space-between;
+    margin-top: -15px;
+}
+
+.top-heading-info {
+    display: flex;
+    gap: 20px;
+    font-size: 24px;
+    color: gray;
+}
+
+.top-heading-info>img {
+    width: 30px;
+}
+
+.top-video {
+    margin-top: 30px;
+    grid-column: 1/8;
+    grid-row: 2/4;
+}
+
+.top-video>button {
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+.top-right-content {
+    grid-column: span 4/13;
+    grid-row: 2/4;
+    margin-top: 50px;
+}
+
+.top-right-content h2 {
+    font-size: 30px;
+    font-weight: 500;
+}
+
+.top-right-content h2+p {
+    margin-bottom: 70px;
+    font-size: 21px;
+    color: gray;
+}
+
+.top-right-content>p+a {
+    font-family: Roboto, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    border: 1px solid #324FBE;
+    border-radius: 4px;
+    font-size: 20px;
+    color: #324FBE;
+    background-color: white;
+    font-weight: 500;
+    padding: 12px 18px;
+    text-decoration: none;
+    width: 220px;
+    margin-bottom: 20px;
+    display: block;
+}
+
+#google-logo{
+    display: inline-block;
+    padding: 13px 14px;
+    background-color: white;
+    box-sizing: border-box;
+    border-radius: 4px;
+}
+.top-right-content>a+a {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    width: 280px;
+    font-family: Roboto, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    border: 2px solid #2A58C1;
+    border-radius: 4px;
+    font-size: 20px;
+    font-weight: 500;
+    color: white;
+    background-color: #2A58C1;
+    text-decoration: none;
+}
+
+.top-right-content>a+a+p {
+    margin-top: 40px;
+    font-size: 20px;
+    color: gray;
+}
+
+
+
+/* Brand Section */
+
+.brand {
+    padding: 50px 0px;
+    margin: 50px 5%;
+}
+
+.brand>h2 {
+    text-align: center;
+    font-size: 40px;
+    font-weight: 500;
+}
+
+.brand>div {
+    display: flex;
+    overflow: hidden;
+}
+
+.sildes {
+    display: flex;
+    -webkit-box-pack: center;
+    justify-content: center;
+    animation: 20s linear 0s infinite normal none running slideAnimation;
+}
+
+.sildes>img {
+    height: 32px;
+    margin: 30px 30px 40px;
+}
+
+@keyframes slideAnimation {
+    0% {
+        transform: translateX(0%);
+        transform: translateX(0%);
+    }
+
+    100% {
+        transform: translateX(calc(-100%));
+        transform: translateX(calc(-100%));
+    }
+
+}
+
+.slides-bottom {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.slides-bottom>div {
+    display: flex;
+}
+
+.slides-bottom>div>img {
+    width: 28px;
+    margin-right: 20px;
+}
+
+.slides-bottom>div>img+p {
+    font-size: 20px;
+    color: gray;
+}
+
+
+
+
+/* How It works Section */
+
+.how-it-works {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    column-gap: 50px;
+    row-gap: 30px;
+    margin: 5%;
+}
+
+.heading {
+    text-align: center;
+    grid-column: 1/5;
+}
+
+.heading>h2 {
+    font-size: 40px;
+    font-weight: 500;
+}
+
+.heading>p {
+    font-size: 23px;
+    color: gray;
+    margin-top: -15px;
+}
+
+.how-it-works .heading+div {
+    border-bottom: 1px solid darkgray;
+    grid-column: 1/3;
+}
+
+
+.how-it-works .heading+div+div {
+    border-bottom: 1px solid darkgray;
+    grid-column: 3/5;
+}
+.how-it-works .observe {
+   background-color: #F9F5CA;
+   padding: 10px;
+   font-size: 21px;
+   gap: 10px;
+   align-items: center;
+   display: flex;
+   width: 150px;
+   margin-bottom: 20px;
+}
+
+
+.how-it-works .ask {
+   background-color: #CCC2EB;
+   padding: 10px;
+   font-size: 21px;
+   gap: 10px;
+   align-items: center;
+   display: flex;
+   width: 150px;
+}
+
+
+.how-it-works .heading+div+div~div {
+    border: 1px solid lightgray;
+    padding: 20px;
+    border-radius: 4px;
+}
+
+.how-it-works .heading+div+div~div>img {
+    width: 100%;
+}
+
+.how-it-works .heading+div+div~div>h3 {
+    font-size: 29px;
+    font-weight: 500;
+}
+
+.how-it-works .heading+div+div~div>p:not(:last-child) {
+    font-size: 21px;
+    color: gray;
+    margin-bottom: 100px;
+}
+
+.how-it-works .heading+div+div~div>p:last-child {
+    font-size: 21px;
+}
+
+
+/* Privacy Section */
+.privacy {
+    display: flex;
+    gap: 100px;
+    margin: 130px 5%;
+    justify-content: space-between;
+}
+
+.privacy-left >h2 {
+    font-size: 40px;
+    font-weight: 500;
+}
+
+.privacy .privacy-left {
+    width: 40%;
+}
+
+.privacy .privacy-right {
+    width: 50%;
+}
+
+.privacy>.privacy-right {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+}
+
+.privacy>.privacy-right>div>img {
+    width: 38px;
+}
+.privacy>.privacy-right>div>h3 {
+    font-size: 26px;
+    font-weight: 500;
+}
+.privacy>.privacy-right>div>p {
+    font-size: 21px;
+}
