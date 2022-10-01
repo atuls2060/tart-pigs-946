@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+        integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <link rel="stylesheet" href="styles/signup.css ">
+    <title>Create your Hotjar account - Hotjar</title>
+</head>
+
+<body>
+    <!-- Navbar Section -->
+    <div class="navbar">
+        <a href="/">
+            <img src="icons/logo.svg" alt="">
+        </a>
+    </div>
+    <!-- Top Section -->
+
+    <div class="top">
+        <div>
+            <h1>Create your Hotjar account</h1>
+            <button class="btn-filled-icon" id="google-btn">
+                <img src="icons/google.svg" alt="">
+                Sign in with Google
+            </button>
+            <div>
+                <div></div>
+                <p>Or</p>
+                <div></div>
+            </div>
+            <button class="btn-filled-icon" id="email-btn" onclick="showForm()">
+                Sign up with email
+            </button>
+
+            <form action="" style="display: none;">
+                <label for="name">Full name</label>
+                <input id="name" type="text" placeholder="e.g. Mary Jackson" required>
+                <label for="email">Email address</label>
+                <input id="email" type="email" placeholder="e.g. mary.jackson@nasa.com" required>
+                <label for="password">Password</label>
+                <input id="password" type="password" placeholder="Enter your password" required>
+                <div>
+                    <p><i class="fa fa-check"></i> 8 characters min.</p>
+                    <p><i class="fa fa-check"></i> One uppercase</p>
+                    <p><i class="fa fa-check"></i> One lowercase</p>
+                </div>
+                <input id="accept-privacy" type="checkbox"><span>I accept the <a href="">Terms of service</a></span>
+
+                <br>
+                <input id="sign-in-btn" class="btn-filled-icon" type="submit" value="Sign in">
+            </form>
+            <p>Already have an account? <a href="login.html">Sign in now.</a></p>
+        </div>
+    </div>
+</body>
+
+</html>
+
+<script>
+    function showForm() {
+        document.querySelector("#email-btn").style.display = "none";
+        document.querySelector("form").style.display = "block";
+    }
+
+    //Handle sign up
+
+    document.querySelector("form").addEventListener("submit", submitHandler);
+
+    let nameInput = document.querySelector("#name");
+    let emailInput = document.querySelector("#email");
+    let passwordInput = document.querySelector("#password");
+    // let keepSignIn = document.querySelector("#keep-logged-in");
+
+    function submitHandler(e) {
+        e.preventDefault();
+        let name = nameInput.value.trim();
+        let email = emailInput.value.trim();
+        let password = passwordInput.value.trim();
+        // let keepLogIn = keepSignIn.checked;
+
+        if (name == "" || email == "" || password == "") {
+            alert("All feild required");
+            return;
+        }
+        let userData = {
+            name: name,
+            email: email,
+            password: password
+        }
+        signUpUser(userData);
+    }
+
+    function signUpUser(userData) {
+        let users = JSON.parse(localStorage.getItem("users")) || [];
+
+        //check if user already exists
+        let userFound = false;
+
+        for (let i = 0; i < users.length; i++) {
+            let currUser = users[i];
+            if (currUser.email == userData.email) {
+                userFound = true;
+                break;
+            }
+        }
+
+        if (userFound) {
+            alert("User already exist with this email");
+        } else {
+            //create account
+            users.push(userData);
+            localStorage.setItem("users", JSON.stringify(users));
+            alert("Account created successfully.");
+            location.href = "login.html";
+        }
+    }
+</script>
