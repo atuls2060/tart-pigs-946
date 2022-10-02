@@ -47,7 +47,7 @@
                 <label for="password">Password</label>
                 <input id="password" type="password" placeholder="Enter your password" required>
                 <input id="keep-logged-in" type="checkbox"><span>Keep me signed in</span>
-                
+
                 <br>
                 <a href="">Forgot password?</a>
                 <input id="sign-in-btn" class="btn-filled-icon" type="submit" value="Sign in">
@@ -57,8 +57,45 @@
             <p>HOTJAR GUIDES</p>
             <img src="https://insights.hotjar.com/static/37d85d9a61db85c93d7f.png" alt="">
             <h3>Guides to learn more about Hotjar</h3>
-            <p>Check out our guides to better understand user behavior, make the right changes, improve UX, and increase conversions on your website and product</p>
+            <p>Check out our guides to better understand user behavior, make the right changes, improve UX, and increase
+                conversions on your website and product</p>
             <button class="btn-outline">Explore Guides</button>
+        </div>
+    </div>
+
+    <!-- Floating Feedback -->
+    <div class="feedback" onclick="expandFeedback()">
+        <p>Feedback</p>
+        <img src="icons/feedback.png" alt="">
+    </div>
+    <div class="feeback-popup">
+        <i class="fa fa-close" onclick="closeFeedback()"></i>
+        <p>How would you rate your experience?</p>
+        <div>
+            <div>
+                <img id="feedback-icon" src="icons/hate.png" alt="">
+                <p id="feedback-text">Hate</p>
+            </div>
+            <div>
+                <img id="feedback-icon" src="icons/dislike.png" alt="">
+                <p id="feedback-text">Dislike</p>
+            </div>
+            <div>
+                <img id="feedback-icon" src="icons/neutral.png" alt="">
+                <p id="feedback-text">Neutral</p>
+            </div>
+            <div>
+                <img id="feedback-icon" src="icons/like.png" alt="">
+                <p id="feedback-text">Like</p>
+            </div>
+            <div>
+                <img id="feedback-icon" src="icons/love.png" alt="">
+                <p id="feedback-text">Love</p>
+            </div>
+        </div>
+        <div>
+            <p><img src="https://www.hotjar.com/images/hotjar-logo-small.svg" alt="">Not using <a
+                    href="login.html">hotjar</a> yet?</p>
         </div>
     </div>
 </body>
@@ -66,47 +103,59 @@
 </html>
 
 <script>
-    document.querySelector("form").addEventListener("submit",submitHandler);
+    document.querySelector("form").addEventListener("submit", submitHandler);
 
     let emailInput = document.querySelector("#email");
     let passwordInput = document.querySelector("#password");
     let keepSignIn = document.querySelector("#keep-logged-in");
 
-    function submitHandler(e){
+    function submitHandler(e) {
         e.preventDefault();
         let email = emailInput.value.trim();
         let password = passwordInput.value.trim();
         let keepLogIn = keepSignIn.checked;
 
-        if(email == "" || password == ""){
+        if (email == "" || password == "") {
             alert("All feild required");
             return;
         }
         let userData = {
-            email:email,
-            password:password,
-            keepLogIn:keepLogIn
+            email: email,
+            password: password,
+            keepLogIn: keepLogIn
         }
         loginUser(userData);
     }
 
-    function loginUser(userData){
+    function loginUser(userData) {
         let users = JSON.parse(localStorage.getItem("users")) || [];
 
         let userFound = false;
-       
-        for(let i = 0; i < users.length; i++){
+
+        for (let i = 0; i < users.length; i++) {
             let currUser = users[i];
-            if(currUser.email == userData.email && currUser.password == userData.password){
+            if (currUser.email == userData.email && currUser.password == userData.password) {
                 userFound = true;
                 break;
             }
         }
 
-        if(userFound){
+        if (userFound) {
             alert("Login success");
-        }else{
+        } else {
             alert("Wrong Email or Password.");
         }
+    }
+
+
+    //Feedback Expand
+    function expandFeedback() {
+        document.querySelector(".feedback").style.display = "none";
+        document.querySelector(".feeback-popup").style.right = "60px";
+    }
+    //Feedback Close
+    function closeFeedback() {
+        document.querySelector(".feedback").style.display = "flex";
+        document.querySelector(".feeback-popup").style.right = "-370px";
     }
 </script>
