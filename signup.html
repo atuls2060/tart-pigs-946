@@ -59,6 +59,43 @@
             <p>Already have an account? <a href="login.html">Sign in now.</a></p>
         </div>
     </div>
+
+
+    <!-- Floating Feedback -->
+    <div class="feedback" onclick="expandFeedback()">
+        <p>Feedback</p>
+        <img src="icons/feedback.png" alt="">
+    </div>
+    <div class="feeback-popup">
+        <i class="fa fa-close" onclick="closeFeedback()"></i>
+        <p>How would you rate your experience?</p>
+        <div>
+            <div>
+                <img id="feedback-icon" src="icons/hate.png" alt="">
+                <p id="feedback-text">Hate</p>
+            </div>
+            <div>
+                <img id="feedback-icon" src="icons/dislike.png" alt="">
+                <p id="feedback-text">Dislike</p>
+            </div>
+            <div>
+                <img id="feedback-icon" src="icons/neutral.png" alt="">
+                <p id="feedback-text">Neutral</p>
+            </div>
+            <div>
+                <img id="feedback-icon" src="icons/like.png" alt="">
+                <p id="feedback-text">Like</p>
+            </div>
+            <div>
+                <img id="feedback-icon" src="icons/love.png" alt="">
+                <p id="feedback-text">Love</p>
+            </div>
+        </div>
+        <div>
+            <p><img src="https://www.hotjar.com/images/hotjar-logo-small.svg" alt="">Not using <a
+                    href="login.html">hotjar</a> yet?</p>
+        </div>
+    </div>
 </body>
 
 </html>
@@ -120,5 +157,16 @@
             alert("Account created successfully.");
             location.href = "login.html";
         }
+    }
+
+    //Feedback Expand
+    function expandFeedback() {
+        document.querySelector(".feedback").style.display = "none";
+        document.querySelector(".feeback-popup").style.right = "60px";
+    }
+    //Feedback Close
+    function closeFeedback() {
+        document.querySelector(".feedback").style.display = "flex";
+        document.querySelector(".feeback-popup").style.right = "-370px";
     }
 </script>
